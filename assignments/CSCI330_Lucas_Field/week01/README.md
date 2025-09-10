@@ -1,106 +1,142 @@
-# HW_01: Introduction to C++ - Problem Sets
-
-## Overview
-Complete the problem sets from Module 1 Chapter 1, demonstrating basic C++ programming concepts including program structure, functions, and control flow.
-
-## Related Module
-📚 **[Module 01 - Chapter 1: Up and Running](../)**
-
-## Assignment Requirements
-Complete all problem sets as detailed in the module assignments:
-
-### Problem Set 1: Getting Started (30 minutes)
-- **Problem 1.1**: Your First Program - Basic program structure
-- **Problem 1.2**: Fix the Errors - Understanding compilation
-- **Problem 1.3**: Compilation Practice - Compile-run cycle
-
-### Problem Set 2: Basic Programming (45 minutes)  
-- **Problem 2.1**: Temperature Converter - Variables and arithmetic
-- **Problem 2.2**: Simple Function - Function creation and calling
-- **Problem 2.3**: Basic Decisions - If-else statements
-
-### Problem Set 3: Mini Calculator Project (60 minutes)
-- **Problem 3.1**: Calculator Functions - Combining concepts
-- **Problem 3.2**: Add Error Checking - Handle edge cases  
-- **Problem 3.3**: Test Your Calculator - Verification
-
-## File Organization
-Organize your solutions in this structure:
-```
-CSCI330_FirstName_LastName/
-└── week01/
-    ├── problem_set_1/
-    │   ├── problem_1_1.cpp
-    │   ├── problem_1_2.cpp
-    │   └── problem_1_3.cpp
-    ├── problem_set_2/
-    │   ├── problem_2_1.cpp
-    │   ├── problem_2_2.cpp
-    │   └── problem_2_3.cpp
-    ├── problem_set_3/
-    │   ├── problem_3_1.cpp
-    │   ├── problem_3_2.cpp
-    │   └── problem_3_3.cpp
-    └── README.md (with compilation notes)
+Problem 1-1:
+1. Sample Output:
+```output
+student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01/problem_
+set_1$ ./problem1-1
+Name: Lucas Field
+Favorite Language: Java
+Learning C++ because: I have taken a C++ class before, but I want to strengthen my understanding, it seems like a good baseline to help me understand other languages.
 ```
 
-## Building and Testing
-```bash
-# Copy template to your directory first
-mkdir -p assignments/CSCI330_FirstName_LastName/week01
-cp -r modules/module-01_ch1/assignment-template/* assignments/CSCI330_FirstName_LastName/week01/
-
-# Navigate to your directory
-cd assignments/CSCI330_FirstName_LastName/week01
-
-# Build (if using the starter template structure)
-mkdir build && cd build
-cmake ..
-make
-make test
+Problem 1-2:
+1. Sample Output:
+```output
+student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01/problem_
+set_1$ ./problem1-2
+25°C = 77°F
+0°C = 32°F
+100°C = 212°F
+```
+Problem 1-3:
+Compilation Errors:
+1. For this, i changed analyzed_number, to int
+```
+problem1-3.cpp: In function 'void analyze_number(int)':
+problem1-3.cpp:7:24: error: ordered comparison of pointer with integer zero ('void (*)(int)' and 'int')
+    7 |     if (analyze_number > 0) {
+      |         ~~~~~~~~~~~~~~~^~~
+problem1-3.cpp:8:20: error: invalid conversion from 'int' to 'const char*' [-fpermissive]
+    8 |             printf(num, "is positive.");
+      |                    ^~~
+      |                    |
+      |                    int
+In file included from /usr/include/c++/11/cstdio:42,
+                 from problem1-3.cpp:1:
+/usr/include/stdio.h:356:43: note:   initializing argument 1 of 'int printf(const char*, ...)'
+  356 | extern int printf (const char *__restrict __format, ...);
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+problem1-3.cpp:10:10: error: expected primary-expression before 'if'
+   10 |     else-if (analyze_number < 0) {
+      |          ^~
+problem1-3.cpp:13:5: error: 'else' without a previous 'if'
+   13 |     else {
+      |     ^~~~
+problem1-3.cpp:14:20: error: invalid conversion from 'int' to 'const char*' [-fpermissive]
+   14 |             printf(num, "is zero.");
+      |                    ^~~
+      |                    |
+      |                    int
+In file included from /usr/include/c++/11/cstdio:42,
+                 from problem1-3.cpp:1:
+/usr/include/stdio.h:356:43: note:   initializing argument 1 of 'int printf(const char*, ...)'
+  356 | extern int printf (const char *__restrict __format, ...);
+```
+2. For this error, I removed the hyphenated else-if
+```
+problem1-3.cpp: In function 'void analyze_number(int)':
+problem1-3.cpp:8:20: error: invalid conversion from 'int' to 'const char*' [-fpermissive]
+    8 |             printf(num, "is positive.");
+      |                    ^~~
+      |                    |
+      |                    int
+In file included from /usr/include/c++/11/cstdio:42,
+                 from problem1-3.cpp:1:
+/usr/include/stdio.h:356:43: note:   initializing argument 1 of 'int printf(const char*, ...)'
+  356 | extern int printf (const char *__restrict __format, ...);
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+problem1-3.cpp:10:10: error: expected primary-expression before 'if'
+   10 |     else-if (num < 0) {
+      |          ^~
+problem1-3.cpp:13:5: error: 'else' without a previous 'if'
+   13 |     else {
+      |     ^~~~
+problem1-3.cpp:14:20: error: invalid conversion from 'int' to 'const char*' [-fpermissive]
+   14 |             printf(num, "is zero.");
+      |                    ^~~
+      |                    |
+      |                    int
+In file included from /usr/include/c++/11/cstdio:42,
+                 from problem1-3.cpp:1:
+/usr/include/stdio.h:356:43: note:   initializing argument 1 of 'int printf(const char*, ...)'
+  356 | extern int printf (const char *__restrict __format, ...);
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+```
+2. Sample Output:
+```output
+student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01/problem_set_1$ ./problem1-3
+Analyzing 10: 10 is positive.Analyzing -5: -5 is negative.Analyzing 0: 0 is zero.Analyzing 7: 7 is positive.student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01/problem_set_1$ vim problem1-3.cpp
 ```
 
-## Submission Process
+I didn't like the formatting, so I added a "\n" to the printf statements:
 
-### Step 1: Complete Your Work
-- Follow the file organization above
-- Include compilation notes in your README.md
-- Test all programs thoroughly
-
-### Step 2: Create Branch and Submit
-```bash
-# Create feature branch for this assignment
-git checkout -b week01-submission
-
-# Add your completed work
-git add assignments/CSCI330_FirstName_LastName/week01/
-git commit -m "Complete HW_01: Chapter 1 Problem Sets"
-
-# Push and create Pull Request
-git push -u origin week01-submission
+NEW Sample Output:
+student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01/problem_set_1$ ./problem1-3
+```output
+Analyzing 10: 10 is positive.
+Analyzing -5: -5 is negative.
+Analyzing 0: 0 is zero.
+Analyzing 7: 7 is positive.
 ```
 
-### Step 3: Submit to Canvas
-**Canvas Submission**: Submit the link to your completed assignment directory:
+Problem 2-1:
+1. Sample Output:
+```output
+Calculator Testing:
+15 + 3 = 18
+15 - 3 = 12
+15 * 3 = 45
+15 / 3 = 5
+
+Edge Case Testing:
+Error: Cannot divide by zero!
+-5 + 8 = 3
 ```
-https://github.com/YourUsername/csci330_f25/tree/main/assignments/CSCI330_FirstName_LastName/week01
+Problem2-2:
+1. Sample Output:
+```output
+
+Calculator Results for 15 and 3:
+Addition: 15 + 3 = 18
+Subtraction: 15 - 3 = 12
+Multiplication: 15 * 3 = 45
+Division: 15 / 3 = 5
 ```
+```output
+Enter two integers: 10 0
 
-**Example**: `https://github.com/jsmith/csci330_f25/tree/main/assignments/CSCI330_John_Smith/week01`
+Calculator Results for 10 and 0:
+Addition: 10 + 0 = 10
+Subtraction: 10 - 0 = 10
+Multiplication: 10 * 0 = 0
+Division: Error! Divide by Zero is not possible!
+```
+```output
+student@cpp-dev:~/workspace/assignments/CSCI330_Lucas_Field/week01$ ./problem2-2
+Enter two integers: -5 2
 
-## Assignment Rubric (16 Points Total)
-
-This assignment will be evaluated using the following rubric:
-
-| Criteria | Advanced (A) - 4 points | Proficient (P) - 3 points | Developing (D) - 2 points | Incomplete (I) - 1 point |
-|----------|-------------------------|---------------------------|--------------------------|-------------------------|
-| **Functionality & Requirements** | Code compiles and runs perfectly. All requirements met with edge cases handled. Demonstrates mastery of chapter concepts. | Code compiles and runs correctly. All main requirements met. Minor issues don't affect core functionality. Shows solid understanding. | Code compiles with warnings or has minor runtime issues. Most requirements met but some functionality missing or incomplete. | Code doesn't compile or has major functionality problems. Key requirements not met. Limited understanding evident. |
-| **Concept Implementation** | Expertly implements chapter-specific concepts (environment setup, basic C++). Shows deep understanding of when and why to use features. | Correctly implements chapter concepts with good understanding. Appropriate use of language features. Shows clear comprehension of material. | Implements most chapter concepts but with some gaps or inconsistencies. Shows developing understanding but needs refinement. | Limited or incorrect implementation of chapter concepts. Doesn't demonstrate understanding of core material. |
-| **Code Quality & Modern C++** | Exceptional organization, clear naming, appropriate modern C++ features. Code is maintainable and follows best practices consistently. | Well-organized code with good structure. Uses modern C++ features appropriately. Clear and readable with reasonable practices. | Code works but organization could improve. Inconsistent use of modern features. Shows understanding but lacks polish. | Poor organization, minimal use of modern C++ features. Difficult to read and understand. Basic functionality only. |
-| **Problem-Solving & Verification** | Clear evidence of systematic approach. Handles edge cases and error conditions. Shows thorough verification of results with multiple test scenarios. | Good problem-solving approach with reasonable error handling. Shows evidence of testing and verification of functionality. | Basic problem-solving evident but limited error handling. Some testing done but not comprehensive. Shows developing verification skills. | Little evidence of systematic approach. Minimal error handling or testing. No clear verification strategy demonstrated. |
-
-**Note**: This rubric applies to the entire assignment including all three problem sets.
-- [ ] Professional Git commit messages
-
-## Time Expectation
-**Total: 2.25 hours** for all three problem sets. If taking significantly longer, ask for help!
+Calculator Results for -5 and 2:
+Addition: -5 + 2 = -3
+Subtraction: -5 - 2 = -7
+Multiplication: -5 * 2 = -10
+Division: -5 / 2 = -2
+```
