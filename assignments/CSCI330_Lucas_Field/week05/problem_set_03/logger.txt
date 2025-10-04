@@ -1,0 +1,2 @@
+[File] This should go to file.
+[File] ERROR: File error message.

@@ -1,0 +1,12 @@
+[File] This should go to file.
+[File] ERROR: File error message.
+[File] Application started
+[File] Doing important work...
+[File] ERROR: Something went wrong!
+[File] Recovered from error
+[File] Application finished
+[File] Application started
+[File] Doing important work...
+[File] ERROR: Something went wrong!
+[File] Recovered from error
+[File] Application finished
